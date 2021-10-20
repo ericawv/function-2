@@ -13,8 +13,6 @@ const exclaim = function(str) {
  declaration
 //expression
 
-
-
 ////////// PROBLEM 2 //////////
 
 /*
@@ -41,8 +39,6 @@ arrow
 }
   
 */
-
-
 
 ////////// PROBLEM 3 //////////
 
@@ -97,7 +93,6 @@ const compareNums = (num1, num2) => {
 
 }
 
-  
 ////////// PROBLEM 6 //////////
 
 /*
@@ -113,10 +108,5 @@ const compareNums = (num1, num2) => {
 
 //CODE HERE
 const bestMovie =  movieParam => (`${movieParam} is the best movie ever!`)
-
-
-
-
-
 
 
