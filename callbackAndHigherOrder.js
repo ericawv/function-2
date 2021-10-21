@@ -6,21 +6,15 @@
 */
 
 // CODE HERE
-const multiply = (num1, num2, callback) => console.log(`This the output of the param ${num1} and ${num2}`)
-
-
-
-
+const multiply = (num1, num2, callback) => callback(num1 * num2)
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
-
-
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) //should console.log 12
+})
 
 ////////// PROBLEMS 2 - 6 //////////
 
@@ -30,8 +24,6 @@ const multiply = (num1, num2, callback) => console.log(`This the output of the p
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // Do not edit the code above.
 
-
-
 ////////// PROBLEM 2 //////////
 
 /*
@@ -40,17 +32,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+let first = (array, callback) => callback(array[0]) 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
-
-
+first(names, firstName => {
+  console.log('The first name in names is ' + firstName)
+})
 
 ////////// PROBLEM 3 //////////
 
@@ -60,15 +50,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+const last = (array, callback) => callback(array[array.length -1])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+})
 
 
 
@@ -82,21 +72,25 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const contains = (array, name, callback) => {
+  if(array.includes(name) === true){
+    callback(true)
+  } else{
+    callback(false)
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
-
-
+contains(names, 'Colt', result => {
+  if(result === true){
+    console.log('Colt is in the array')
+  } else {
+    console.log('Colt is not in the array')
+  }
+})
 
 ////////// PROBLEM 5 //////////
 
@@ -107,6 +101,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+const uniq = (array, callback) => {
+  for(let i = 0; i < array.length; i++){
+    for(let x = i + 1; x < array.length; x++){
+      if(array[i] === array[x]){
+        array.splice(x, 1)
+        x--
+      }
+    }
+  }
+  callback(array)
+}  
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -116,8 +121,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
-
+uniq(names, uniqArr => console.log(`The new names array with all the duplicate items removed is ${uniqArr}`))
 
 ////////// PROBLEM 6 //////////
 
@@ -127,8 +131,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
-
+const each = (array, callback) => array.forEach((element, i) => callback(element, i))
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -138,7 +141,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+each(names, (item, index) => `The item at index ${item} is ${item}.`)
 
 ////////// PROBLEM 7 //////////
 
@@ -171,15 +174,20 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE 
-
-
+const getUserById = (array, id, callback) => {
+  for(let i = 0; i < array.length; i++){
+    if(array[i].id === id) {
+      return callback(array[i])
+    }
+  }  
+}
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+})
 
 ////////// CHALLENGE //////////
 
